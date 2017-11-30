@@ -1,1 +1,1 @@
-VideoReader('test.mp4')
+VideoReader('test.avi')

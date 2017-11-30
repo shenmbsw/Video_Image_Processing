@@ -5,7 +5,6 @@ function [dm, dn] = block_matching(block,next_pic,m,n)
         cmp_block = get_block(next_pic,mm(idx),nn(idx));
         err(idx) = sum(sum((block - cmp_block).^2));
     end
-    
     smallest = find(err == min(err));
     if (numel(smallest) == 1)
         dm = mm(smallest) - m;
@@ -23,10 +22,8 @@ function [dm, dn] = block_matching(block,next_pic,m,n)
     
 end
 
-
-
 function [mm, nn, pt_num] = get_idx(m,n)
-    r = 6;
+    r = 16;
     i = -r:r;
     j = -r:r;
     [mp,np] = meshgrid(i,j);
@@ -38,7 +35,4 @@ function [mm, nn, pt_num] = get_idx(m,n)
     mm = idx(:,1).';
     nn = idx(:,2).';
     pt_num = numel(mm);
-end
-function [block] = get_block(pic,m,n)
-    block = pic(m:m+15,n:n+15);
 end
